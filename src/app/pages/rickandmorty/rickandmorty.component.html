@@ -2,7 +2,10 @@
   class="flex min-h-screen p-10 flex-wrap items-center justify-center gap-10"
 >
   @for (item of listCharacters; track item.id) {
-  <div class="md:w-1/6 md:h-1/6 flex flex-col bg-gray-900 rounded-md">
+  <div
+    class="md:w-1/6 md:h-1/6 flex flex-col bg-gray-900 rounded-md hover:cursor-pointer hover:p-1"
+    (click)="detailCharacter(item.id)"
+  >
     <img
       src="{{ item.image }}"
       alt="img"

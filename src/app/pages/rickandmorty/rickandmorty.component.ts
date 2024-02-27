@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RickandmortyService } from '../../services/rickandmorty/rickandmorty.service';
 import { TypeCharacter } from '../../interfaces/character.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rickandmorty',
@@ -10,7 +11,10 @@ import { TypeCharacter } from '../../interfaces/character.interface';
   styleUrl: './rickandmorty.component.css',
 })
 export class RickandmortyComponent implements OnInit {
-  constructor(private rickandmortyService: RickandmortyService) {}
+  constructor(
+    private rickandmortyService: RickandmortyService,
+    private route: Router
+  ) {}
   ngOnInit(): void {
     this.getCharacters(1);
   }
@@ -28,5 +32,9 @@ export class RickandmortyComponent implements OnInit {
       },
       error: (e) => console.log(e),
     });
+  }
+
+  detailCharacter(id: number) {
+    this.route.navigate([`/rickandmorty/detail-character/${id}`]);
   }
 }
