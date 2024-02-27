@@ -1,0 +1,36 @@
+<div
+  class="flex min-h-screen p-10 flex-wrap items-center justify-center gap-10"
+>
+  @for (item of listCharacters; track item.id) {
+  <div class="md:w-1/6 md:h-1/6 flex flex-col bg-gray-900 rounded-md">
+    <img
+      src="{{ item.image }}"
+      alt="img"
+      width="1000"
+      height="1000"
+      loading="lazy"
+      class="rounded-md"
+    />
+    <div class="ml-5 p-5 flex items-center flex-col space-y-1">
+      <h1 class="text-xl">{{ item.name }}</h1>
+      <p>
+        {{ item.species }}
+      </p>
+    </div>
+  </div>
+  }
+  <div class="flex w-full p-1 justify-between">
+    <button
+      class="bg-gray-500 p-1 rounded-md hover:bg-gray-400 px-5"
+      (click)="getCharacters(page - 1)"
+    >
+      Anterior
+    </button>
+    <button
+      class="bg-gray-500 p-1 rounded-md hover:bg-gray-400 px-5"
+      (click)="getCharacters(page + 1)"
+    >
+      Siguiente
+    </button>
+  </div>
+</div>
